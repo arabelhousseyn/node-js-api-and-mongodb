@@ -6,8 +6,8 @@ const dbo = require('./config/database')
 app.get('/',(req,res) => {
     res.send('api node js')
 })
+const {posts} = require('./imports/imports')
 app.use(bodyParser.json())
-const posts = require('./routes/posts')
 app.use('/posts',posts)
 
 app.listen(3000)
