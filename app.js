@@ -6,8 +6,11 @@ const dbo = require('./config/database')
 app.get('/',(req,res) => {
     res.send('api node js')
 })
-const {posts} = require('./imports/imports')
+const {posts,login,register,welcome} = require('./imports/imports')
 app.use(bodyParser.json())
 app.use('/posts',posts)
+app.use('/login',login)
+app.use('/register',register)
+app.use('/welcome',welcome)
 
-app.listen(3000)
+app.listen(process.env.PORT)
