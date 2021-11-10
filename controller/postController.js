@@ -27,10 +27,10 @@ const updatePost = async (req,res) => {
             res.json(JSON.stringify({success : true}))
         })
         .catch(err => {
-            console.log(err)
+            res.json(JSON.stringify({message : 'id not found'}))
         })
     }
-     res.json(JSON.stringify({message : 'id not found'}))
+     res.json(JSON.stringify({message : 'id missing'}))
 }
 
 const deletePost = async (req,res) => {
@@ -41,10 +41,10 @@ const deletePost = async (req,res) => {
             res.json(JSON.stringify({success : true}))
          })
          .catch(err => {
-            console.log(err)
+            res.json(JSON.stringify({message : 'id not found'}))
          })
      }
-     res.json(JSON.stringify({message : 'id not found'}))
+     res.json(JSON.stringify({message : 'id missing'}))
 }
 
 module.exports = {
