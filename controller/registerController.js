@@ -1,6 +1,7 @@
 const user = require('../models/User')
 const bycrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const {validationResult} = require('express-validator')
 const register =  (req,res) => {
 
      bycrypt.hash(req.body.password,10,(err,hash) => {
@@ -13,6 +14,10 @@ const register =  (req,res) => {
             password : hash,
             token : token
         })
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+          }
         let save = insert.save()
         if(save)
         {

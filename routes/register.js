@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const registerController = require('../controller/registerController')
-router.post('/',registerController.register)
+const {body} = require('express-validator')
+body('')
+router.post('/',body('email').isEmail().normalizeEmail(),registerController.register)
 
 module.exports = router
